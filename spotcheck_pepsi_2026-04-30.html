@@ -1,0 +1,896 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<title>Pepsi · SpotCheck Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#0d0f1a;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:13px;line-height:1.5}
+/* ── COVER ── */
+.cover{background:linear-gradient(145deg,#050a1a 0%,#0c1530 35%,#162050 65%,#0a1228 100%);position:relative;overflow:hidden;padding:0}
+.blob{position:absolute;border-radius:50%;pointer-events:none}
+.blob1{width:560px;height:560px;background:radial-gradient(circle,rgba(124,58,237,0.4) 0%,transparent 60%);right:-120px;top:-140px}
+.blob2{width:400px;height:400px;background:radial-gradient(circle,rgba(37,99,235,0.3) 0%,transparent 60%);left:-80px;bottom:-100px}
+.blob3{width:200px;height:200px;background:radial-gradient(circle,rgba(52,211,153,0.15) 0%,transparent 60%);right:180px;bottom:60px}
+.cover-inner{position:relative;padding:44px 56px 0}
+.cover-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:52px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:#2952FF;display:flex;align-items:center;justify-content:center}
+.logo-name{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.04em}
+.doc-meta{text-align:right}
+.doc-type{font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px}
+.doc-date{font-size:12px;color:rgba(255,255,255,0.4);font-weight:500}
+.verdict-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;border-radius:100px;font-size:12px;font-weight:800;margin-bottom:14px;border:1.5px solid}
+.product-name{font-size:48px;font-weight:900;color:#fff;letter-spacing:-2.5px;line-height:1.0;margin-bottom:10px}
+.meta-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:36px}
+.mpill{font-size:11px;font-weight:600;padding:5px 12px;border-radius:100px;background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.12)}
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,0.08)}
+.kpi{padding:20px 18px 22px;border-right:1px solid rgba(255,255,255,0.07)}
+.kpi:last-child{border-right:none}
+.kpi-lbl{font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(176,184,216,0.45);margin-bottom:7px}
+.kpi-val{font-size:26px;font-weight:900;letter-spacing:-0.04em;font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1}
+.kpi-sub{font-size:10px;color:rgba(176,184,216,0.35);margin-top:5px;font-weight:500}
+.c-green{color:#34d399}.c-blue{color:#60a5fa}.c-purple{color:#c4b5fd}.c-amber{color:#fbbf24}.c-white{color:#fff}.c-pink{color:#f9a8d4}
+
+/* ── BODY ── */
+.body{padding:40px 56px 0}
+.section{margin-bottom:36px}
+.sec-hd{display:flex;align-items:center;gap:10px;padding-bottom:11px;border-bottom:1.5px solid #eaecf4;margin-bottom:18px}
+.sec-hd::before{content:'';width:4px;height:14px;border-radius:2px;background:#2952FF;flex-shrink:0}
+.sec-title{font-size:10px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:#9ca3af}
+.sec-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;background:#eff6ff;color:#2952FF;border:1px solid #bfdbfe;margin-left:auto}
+
+/* ── VALUE CARDS ── */
+.val3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.vcard{border:1.5px solid #e5e9f2;border-radius:14px;padding:20px 22px;position:relative;overflow:hidden;background:#fff}
+.vcard::after{content:'';position:absolute;top:-20px;right:-20px;width:70px;height:70px;border-radius:50%;background:rgba(37,99,235,0.05)}
+.vcard.tot{background:linear-gradient(135deg,#1d4ed8 0%,#6d28d9 100%);border-color:transparent}
+.vcard.tot::after{background:rgba(255,255,255,0.07)}
+.vlbl{font-size:9px;font-weight:700;letter-spacing:0.11em;text-transform:uppercase;color:#9ca3af;margin-bottom:9px}
+.vcard.tot .vlbl{color:rgba(255,255,255,0.55)}
+.vnum{font-size:26px;font-weight:900;letter-spacing:-0.04em;font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1;color:#2952FF}
+.vcard.tot .vnum{color:#fff;font-size:30px}
+.vsub{font-size:10px;color:#9ca3af;margin-top:6px;font-weight:500}
+.vcard.tot .vsub{color:rgba(255,255,255,0.45)}
+
+/* ── METRICS GRID ── */
+.met5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.mcard{border:1.5px solid #e5e9f2;border-radius:12px;padding:14px;text-align:center;background:#fff}
+.mlbl{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;margin-bottom:7px}
+.mval{font-size:20px;font-weight:900;letter-spacing:-0.03em;font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1}
+.msub{font-size:10px;color:#9ca3af;margin-top:4px}
+
+/* ── BENCHMARK STRIP ── */
+.bench-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:#f8faff;border:1.5px solid #e5e9f2;border-radius:12px;overflow:hidden;margin-top:14px}
+.bench-col{padding:12px 14px;border-right:1px solid #e5e9f2;text-align:center}
+.bench-col:last-child{border-right:none}
+.bench-tier{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;margin-bottom:4px}
+.bench-val{font-size:13px;font-weight:800;color:#0d0f1a}
+
+/* ── VERDICT ── */
+.vbox{border-radius:13px;padding:22px 24px;position:relative;overflow:hidden}
+/* ::before bar removed, replaced by border-left in inline style to work across page breaks */
+.vbox-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:800;margin-bottom:12px}
+.vbox-text{font-size:13px;line-height:1.75;color:#0d0f1a}
+
+/* ── FRAME CHART ── */
+.chart-wrap{background:#f8faff;border:1.5px solid #e5e9f2;border-radius:12px;padding:18px;overflow:hidden}
+.chart-legend{display:flex;gap:16px;margin-top:12px;justify-content:flex-end}
+.cl-item{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:#6b7280}
+.cl-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+/* ── PLACEMENT ── */
+.plc4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.plc-card{background:#f8faff;border:1.5px solid #e5e9f2;border-radius:11px;padding:14px;text-align:center}
+.plc-val{font-size:22px;font-weight:900;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#0d0f1a}
+.plc-pct{font-size:11px;font-weight:700;color:#2952FF;margin-top:2px}
+.plc-lbl{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9ca3af;margin-top:4px}
+
+/* ── SCORE RING ── */
+.score-row{display:flex;align-items:center;gap:20px;padding:18px 22px;background:#f8faff;border:1.5px solid #e5e9f2;border-radius:12px}
+.score-text{flex:1}
+.score-big{font-size:38px;font-weight:900;font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1}
+.score-sub{font-size:12px;color:#6b7280;margin-top:3px}
+.score-bar{height:10px;background:#e5e9f2;border-radius:100px;overflow:hidden;margin-top:12px}
+.score-fill{height:100%;border-radius:100px}
+
+/* ── 2-COL LAYOUT ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* ── MUSIC CARD ── */
+.music-card{background:linear-gradient(135deg,#0d7a3e 0%,#1db954 100%);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px;color:#fff}
+.music-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.music-track{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.music-artist{font-size:11px;opacity:0.75;margin-top:2px}
+.music-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.2);margin-left:auto;flex-shrink:0}
+.music-none-card{background:#f8faff;border:1.5px solid #e5e9f2;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:12px;color:#9ca3af;font-size:13px}
+
+/* ── INFO TABLE ── */
+.info-tbl{width:100%;border-collapse:collapse}
+.info-tbl td{padding:10px 14px;border-bottom:1px solid #f0f2f8;font-size:12px;vertical-align:top}
+.info-tbl tr:last-child td{border-bottom:none}
+.info-tbl tr:nth-child(even) td{background:#fafbff}
+.info-tbl td:first-child{font-weight:700;color:#6b7280;width:170px;white-space:nowrap}
+.info-tbl td:last-child{color:#0d0f1a;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:11px}
+
+/* ── COMMENTS ── */
+.comment-card{font-size:12px;color:#374151;padding:12px 16px;background:#f9fafb;border-radius:10px;border-left:3px solid #e5e7eb;margin-bottom:8px;line-height:1.65}
+.comment-card::before{content:'"';color:#d1d5db;font-size:20px;line-height:0;vertical-align:-6px;margin-right:4px}
+
+/* ── FOOTER ── */
+.rpt-footer{background:linear-gradient(90deg,#060b1e,#0f1430);color:rgba(255,255,255,0.35);font-size:10px;padding:18px 56px;display:flex;align-items:center;justify-content:space-between;margin-top:40px}
+.footer-logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:12px;color:rgba(255,255,255,0.55)}
+.footer-mark{width:22px;height:22px;border-radius:6px;background:#2952FF;display:flex;align-items:center;justify-content:center}
+
+.print-btn{position:fixed;top:20px;right:20px;background:#2952FF;color:#fff;border:none;padding:12px 24px;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 20px rgba(37,99,235,0.45);display:flex;align-items:center;gap:8px;z-index:999;letter-spacing:-0.01em}
+.pb{display:none}
+@page{size:A4;margin:12mm 14mm}
+@media print{
+  .no-print{display:none!important}
+  #sc-nav{display:none!important}
+  /* ── Page-break markers become real breaks ── */
+  .pb{display:block;height:0;margin:0;padding:0;break-before:page}
+  /* ── Section headers never orphan at page bottom ── */
+  .sec-hd{break-after:avoid}
+  /* ── Allow verdict box to flow across pages (overflow:hidden blocks breaks) ── */
+  .vbox{overflow:visible!important;border-radius:0}
+  /* ── Small components keep together ── */
+  .vcard,.mcard,.plc-card,.score-row,.chart-wrap,.music-card,.music-none-card{break-inside:avoid}
+  .two-col,.val3,.met5,.plc4,.bench-strip{break-inside:avoid}
+  .imp-item{break-inside:avoid;transform:none!important}
+  .imp-sub{break-inside:avoid}
+  /* ── Full-page breaks ── */
+  .cover{break-after:page}
+  .contents-page{break-after:page;overflow:visible!important;min-height:0!important}
+  [style*="display:flex"][style*="gap:14px"][style*="padding:12px 16px"]{break-inside:avoid}
+}
+
+/* ── DARK BODY THEME ── */
+body{background:#080d1e!important;color:#d0d8f0!important}
+.body{background:transparent}
+
+/* Contents page */
+.contents-page{background:linear-gradient(145deg,#060a18 0%,#0c1530 60%,#0a1228 100%);padding:56px 56px 48px;min-height:calc(297mm - 24mm);display:flex;flex-direction:column;position:relative;overflow:hidden;border-top:none}
+.contents-page::before{content:'';position:absolute;top:-80px;right:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.18) 0%,transparent 60%);pointer-events:none}
+.contents-page::after{content:'';position:absolute;bottom:-60px;left:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,0.14) 0%,transparent 60%);pointer-events:none}
+.ct-header{margin-bottom:40px}
+.ct-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#60a5fa;margin-bottom:10px}
+.ct-title{font-size:34px;font-weight:900;color:#e8ecff;letter-spacing:-1.5px;line-height:1;margin-bottom:8px}
+.ct-sub{font-size:12px;color:#6b7a9f;font-weight:500}
+.ct-divider{height:1.5px;background:#2952FF;border:none;margin:28px 0}
+.ct-list{flex:1;display:flex;flex-direction:column;gap:4px}
+.ct-item{display:flex;align-items:center;gap:16px;padding:14px 18px;border-radius:12px}
+.ct-item:nth-child(even){background:rgba(255,255,255,0.04)}
+.ct-num{width:32px;height:32px;border-radius:9px;background:#2952FF;color:#fff;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+.ct-num.plain{background:rgba(255,255,255,0.08);color:#6b7a9f}
+.ct-info{flex:1;min-width:0}
+.ct-name{font-size:13px;font-weight:700;color:#d8e0f8;margin-bottom:2px}
+.ct-desc{font-size:11px;color:#6b7a9f;font-weight:500}
+.ct-dots{flex:1;border-bottom:1.5px dotted rgba(255,255,255,0.12);margin:0 12px;min-width:20px}
+.ct-tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:100px;background:rgba(37,99,235,0.2);color:#60a5fa;border:1px solid rgba(37,99,235,0.35);white-space:nowrap;flex-shrink:0}
+.ct-footer{margin-top:32px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between}
+.ct-footer-brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:12px;color:#d8e0f8}
+.ct-footer-mark{width:24px;height:24px;border-radius:7px;background:#2952FF;display:flex;align-items:center;justify-content:center}
+.ct-footer-meta{font-size:11px;color:#6b7a9f}
+
+/* Section headers */
+.sec-hd{border-color:rgba(255,255,255,0.08)!important}
+.sec-title{color:rgba(176,184,216,0.5)!important}
+.sec-badge{background:rgba(37,99,235,0.2)!important;color:#60a5fa!important;border-color:rgba(37,99,235,0.3)!important}
+
+/* Value cards */
+.vcard{background:rgba(255,255,255,0.04)!important;border-color:rgba(255,255,255,0.09)!important}
+.vlbl{color:rgba(176,184,216,0.4)!important}
+.vnum{color:#60a5fa!important}
+.vsub{color:rgba(176,184,216,0.3)!important}
+.vcard.tot .vlbl,.vcard.tot .vsub{color:rgba(255,255,255,0.45)!important}
+
+/* Metric cards */
+.mcard{background:rgba(255,255,255,0.04)!important;border-color:rgba(255,255,255,0.09)!important}
+.mlbl{color:rgba(176,184,216,0.4)!important}
+.msub{color:rgba(176,184,216,0.3)!important}
+
+/* Benchmark strip */
+.bench-strip{background:rgba(255,255,255,0.03)!important;border-color:rgba(255,255,255,0.08)!important}
+.bench-col{border-color:rgba(255,255,255,0.06)!important}
+.bench-tier{color:rgba(176,184,216,0.4)!important}
+.bench-val{color:#d8e0f8!important}
+
+/* Verdict box, light background set inline by JS, so text must be dark */
+.vbox-text{color:#0d0f1a!important}
+.vbox-text p{color:#0d0f1a!important}
+.vbox-text div{color:#0d0f1a!important}
+
+/* Chart */
+.chart-wrap{background:rgba(255,255,255,0.03)!important;border-color:rgba(255,255,255,0.08)!important}
+.cl-item{color:#6b7a9f!important}
+
+/* Placement cards */
+.plc-card{background:rgba(255,255,255,0.04)!important;border-color:rgba(255,255,255,0.09)!important}
+.plc-val{color:#e8ecff!important}
+.plc-pct{color:#60a5fa!important}
+.plc-lbl{color:rgba(176,184,216,0.4)!important}
+
+/* Score row */
+.score-row{background:rgba(255,255,255,0.04)!important;border-color:rgba(255,255,255,0.08)!important}
+.score-sub{color:#6b7a9f!important}
+.score-bar{background:rgba(255,255,255,0.09)!important}
+
+/* Music none */
+.music-none-card{background:rgba(255,255,255,0.04)!important;border-color:rgba(255,255,255,0.08)!important;color:#6b7a9f!important}
+
+/* Info table */
+.info-tbl td{border-color:rgba(255,255,255,0.06)!important;color:#d0d8f0}
+.info-tbl tr:nth-child(even) td{background:rgba(255,255,255,0.03)!important}
+.info-tbl td:first-child{color:#6b7a9f!important}
+.info-tbl td:last-child{color:#e8ecff!important}
+
+/* Footer */
+.rpt-footer{background:linear-gradient(90deg,#030710,#080d1e)!important}
+
+/* Inline style overrides, cover all hardcoded light colors in the body HTML */
+.body [style*="color:#6b7280"]{color:#8892b0!important}
+.body [style*="color:#9ca3af"]{color:#6b7a9f!important}
+.body [style*="color:#374151"]{color:#c0c8e0!important}
+.body [style*="color:#4b5563"]{color:#b0bcd8!important}
+.body [style*="color:#1e2235"]{color:#d0d8f0!important}
+.body [style*="color:#0d0f1a"]{color:#e8ecff!important}
+/* Verdict box sits on a light background, keep text dark */
+.vbox .vbox-text,.vbox .vbox-text p,.vbox .vbox-text div{color:#0d0f1a!important}
+.body [style*="background:#f8faff"]{background:rgba(255,255,255,0.05)!important;border-color:rgba(255,255,255,0.08)!important}
+.body [style*="background:#f9fafb"]{background:rgba(255,255,255,0.04)!important}
+.body [style*="background:#f8f9fc"]{background:rgba(255,255,255,0.03)!important}
+.body [style*="border:1.5px solid #e5e9f2"]{border-color:rgba(255,255,255,0.08)!important}
+.body [style*="border:1px solid #e5e7eb"]{border-color:rgba(255,255,255,0.1)!important}
+.body [style*="border-bottom:1px solid #f0f2f8"]{border-color:rgba(255,255,255,0.06)!important}
+.body [style*="background:#eff6ff"]{background:rgba(37,99,235,0.2)!important}
+.body [style*="color:#2952FF"]:not(.ct-num):not(.vnum):not(.plc-pct){color:#60a5fa!important}
+.body [style*="font-style:italic"][style*="color:#4b5563"]{color:#9aa4c0!important}
+</style>
+</head><body>
+
+<div class="no-print" style="position:fixed;top:20px;right:20px;display:flex;gap:10px;z-index:999">
+  <button class="print-btn" style="position:static" onclick="savePDF()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 1h8v12H3zM5 4h4M5 6.5h4M5 9h2" stroke="white" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Save as PDF
+  </button>
+  <button id="slidesBtn" class="print-btn" style="position:static;background:linear-gradient(135deg,#059669,#0d9488)" onclick="saveSlides()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="white" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+    Download as Slides
+  </button>
+</div>
+<div id="pdf-guide" style="display:none;position:fixed;inset:0;background:rgba(5,10,26,0.92);z-index:99999;align-items:center;justify-content:center;font-family:"Plus Jakarta Sans",system-ui,sans-serif">
+  <div style="background:#111827;border:1.5px solid rgba(255,255,255,0.12);border-radius:18px;padding:36px 40px;max-width:420px;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,0.6)">
+    <div style="width:52px;height:52px;border-radius:14px;background:#2952FF;display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3v13M7 11l5 5 5-5M5 19h14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div style="font-size:19px;font-weight:800;color:#fff;margin-bottom:6px">Save as PDF</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:22px;line-height:1.6">When the print dialog opens:</div>
+    <div style="text-align:left;display:flex;flex-direction:column;gap:10px;margin-bottom:26px">
+      <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);border-radius:10px;padding:12px 14px">
+        <div style="width:24px;height:24px;border-radius:7px;background:#2952FF;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+        <div style="font-size:13px;color:#d0d8f0">Set <strong style="color:#fff">Destination</strong> → <strong style="color:#60a5fa">Save as PDF</strong></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);border-radius:10px;padding:12px 14px">
+        <div style="width:24px;height:24px;border-radius:7px;background:#2952FF;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+        <div style="font-size:13px;color:#d0d8f0">Click <strong style="color:#fff">More settings</strong> → tick <strong style="color:#60a5fa">Background graphics</strong></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.05);border-radius:10px;padding:12px 14px">
+        <div style="width:24px;height:24px;border-radius:7px;background:#2952FF;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+        <div style="font-size:13px;color:#d0d8f0">Click <strong style="color:#fff">Save</strong>, downloads to your computer</div>
+      </div>
+    </div>
+    <button onclick="document.getElementById('pdf-guide').style.display='none';window.print();" style="width:100%;background:#2952FF;color:#fff;border:none;padding:13px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">Open print dialog →</button>
+    <div style="margin-top:12px"><button onclick="document.getElementById('pdf-guide').style.display='none'" style="background:none;border:none;color:rgba(255,255,255,0.3);font-size:12px;cursor:pointer;font-family:inherit">Cancel</button></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ COVER ══════════════════════════ -->
+<div class="cover">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="cover-inner">
+
+    <div class="cover-nav">
+      <div class="logo">
+        <div class="logo-mark"><svg width="18" height="18" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="3.5" stroke="white" stroke-width="1.2"/><circle cx="5" cy="5" r="1.2" fill="white"/></svg></div>
+        <div class="logo-name">SpotCheck</div>
+      </div>
+      <div class="doc-meta">
+        <div class="doc-type">Brand Visibility Report</div>
+        <div class="doc-date">30 April 2026</div>
+      </div>
+    </div>
+
+    <div class="verdict-pill" style="background:rgba(5,150,105,0.15);border-color:#05966955;color:#34d399">
+      ✓ Strong Visibility
+    </div>
+    <div class="product-name">Pepsi</div>
+    <div class="meta-pills">
+      <span class="mpill">Instagram</span>
+      <span class="mpill">@Aya Derar</span>
+      <span class="mpill">Video by aya_derar</span>
+      <span class="mpill">ID 024afea5</span>
+      <span class="mpill">Exceptional for Instagram</span>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi"><div class="kpi-lbl">Total Value</div><div class="kpi-val c-green">$71</div><div class="kpi-sub">equiv. ad spend</div></div>
+      <div class="kpi"><div class="kpi-lbl">Visibility</div><div class="kpi-val c-blue">85.9%</div><div class="kpi-sub">55s of 64s</div></div>
+      <div class="kpi"><div class="kpi-lbl">Avg Score</div><div class="kpi-val c-purple">7.6/10</div><div class="kpi-sub">placement quality</div></div>
+      <div class="kpi"><div class="kpi-lbl">Views</div><div class="kpi-val c-white">25,700</div><div class="kpi-sub">verified</div></div>
+      <div class="kpi"><div class="kpi-lbl">Engagement</div><div class="kpi-val c-amber">0.36%</div><div class="kpi-sub">78 likes</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ CONTENTS ══════════════════════════ -->
+<div class="contents-page">
+  <div class="ct-header">
+    <div class="ct-eyebrow">SpotCheck · Brand Visibility Intelligence</div>
+    <div class="ct-title">Table of Contents</div>
+    <div class="ct-sub">Pepsi is a carbonated cola soft drink typically seen in cobalt-blue aluminum cans, clear plastic bottles with blue labels, or branded fountain cups, featuring the circular red-white-blue Pepsi globe logo prominently centered on the front. In social media videos it often appears held in hand, placed on tables beside food, opened or poured over ice, with the dark brown fizzy cola visible in a glass or cup as it is consumed. · Instagram · 30 April 2026</div>
+  </div>
+  <hr class="ct-divider">
+  <div class="ct-list">
+    <div class="ct-item">
+      <div class="ct-num">01</div>
+      <div class="ct-info"><div class="ct-name">Media Value Breakdown</div><div class="ct-desc">Visual, audio and total equivalent ad spend value</div></div>
+      <div class="ct-dots"></div><div class="ct-tag">Value</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-num">02</div>
+      <div class="ct-info"><div class="ct-name">Key Metrics &amp; Platform Benchmarks</div><div class="ct-desc">Visibility, score, views, engagement vs. platform averages</div></div>
+      <div class="ct-dots"></div><div class="ct-tag">Metrics</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-num">03</div>
+      <div class="ct-info"><div class="ct-name">AI Analyst Verdict</div><div class="ct-desc">Expert assessment of overall brand placement quality</div></div>
+      <div class="ct-dots"></div><div class="ct-tag">Analysis</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-num">04</div>
+      <div class="ct-info"><div class="ct-name">Frame-by-Frame Brand Score</div><div class="ct-desc">Brand detection score across all 203 extracted video frames</div></div>
+      <div class="ct-dots"></div><div class="ct-tag">Visual</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-num">05</div>
+      <div class="ct-info"><div class="ct-name">Visibility Runs &amp; Placement Score</div><div class="ct-desc">Continuous exposure intervals and average placement quality</div></div>
+      <div class="ct-dots"></div><div class="ct-tag">Visual</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-num">06</div>
+      <div class="ct-info"><div class="ct-name">Audio &amp; Music Analysis</div><div class="ct-desc">Brand mentions, transcript and background music detection</div></div>
+      <div class="ct-dots"></div><div class="ct-tag">Audio</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-num">07</div>
+      <div class="ct-info"><div class="ct-name">Audience Comment Analysis</div><div class="ct-desc">Sentiment, brand perception and community engagement</div></div>
+      <div class="ct-dots"></div><div class="ct-tag">Audience</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-num">08</div>
+      <div class="ct-info"><div class="ct-name">AI Improvement Recommendations</div><div class="ct-desc">Actionable strategies to maximise future brand visibility</div></div>
+      <div class="ct-dots"></div><div class="ct-tag">Next Steps</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-num">,</div>
+      <div class="ct-info"><div class="ct-name">Technical Breakdown</div><div class="ct-desc">CPM rates, engagement multipliers, weighted visibility data</div></div>
+      <div class="ct-dots"></div><div class="ct-tag">Technical</div>
+    </div>
+    <div class="ct-item">
+      <div class="ct-num">,</div>
+      <div class="ct-info"><div class="ct-name">Report Details</div><div class="ct-desc">Full metadata, video info, analysis date and report ID</div></div>
+      <div class="ct-dots"></div><div class="ct-tag">Info</div>
+    </div>
+  </div>
+  <div class="ct-footer">
+    <div class="ct-footer-brand">
+      <div class="ct-footer-mark"><svg width="12" height="12" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="3.5" stroke="white" stroke-width="1.2"/><circle cx="5" cy="5" r="1.2" fill="white"/></svg></div>
+      SpotCheck
+    </div>
+    <div class="ct-footer-meta">Confidential · Generated 30 April 2026</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════ BODY ══════════════════════════ -->
+<div class="body">
+
+<!-- ── VALUE BREAKDOWN ── -->
+<div class="section" style="margin-top:32px">
+  <div class="sec-hd"><div class="sec-title">Media Value Breakdown</div></div>
+  <div class="val3">
+    <div class="vcard">
+      <div class="vlbl">Visual Media Value</div>
+      <div class="vnum">$67</div>
+      <div class="vsub">on-screen brand exposure</div>
+    </div>
+    <div class="vcard">
+      <div class="vlbl">Audio Media Value</div>
+      <div class="vnum" style="color:#2952FF">$4</div>
+      <div class="vsub">verbal brand mentions</div>
+    </div>
+    <div class="vcard tot">
+      <div class="vlbl">Total Media Value</div>
+      <div class="vnum">$71</div>
+      <div class="vsub">equivalent paid media spend</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── KEY METRICS ── -->
+<div class="section">
+  <div class="sec-hd"><div class="sec-title">Key Metrics</div></div>
+  <div class="met5">
+    <div class="mcard"><div class="mlbl">Visibility</div><div class="mval" style="color:#2952FF">85.9%</div><div class="msub">55s visible</div></div>
+    <div class="mcard"><div class="mlbl">Avg Score</div><div class="mval" style="color:#059669">7.6<span style="font-size:12px;font-weight:600;color:#9ca3af">/10</span></div><div class="msub">placement quality</div></div>
+    <div class="mcard"><div class="mlbl">Audio Mentions</div><div class="mval" style="color:#2952FF">15</div><div class="msub">brand mentions</div></div>
+    <div class="mcard"><div class="mlbl">Likes</div><div class="mval">78</div><div class="msub">engagements</div></div>
+    <div class="mcard"><div class="mlbl">Comments</div><div class="mval">14</div><div class="msub">total comments</div></div>
+  </div>
+  <!-- Benchmark comparison -->
+  <div class="bench-strip">
+    <div class="bench-col"><div class="bench-tier">Poor</div><div class="bench-val" style="color:#dc2626">&lt;3%</div></div>
+    <div class="bench-col"><div class="bench-tier">Average</div><div class="bench-val" style="color:#d97706">3–6%</div></div>
+    <div class="bench-col"><div class="bench-tier">Good</div><div class="bench-val" style="color:#059669">6–10%</div></div>
+    <div class="bench-col" style="background:#05966911">
+      <div class="bench-tier">Your Result</div>
+      <div class="bench-val" style="color:#059669">85.9% · Exceptional</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── AI VERDICT ── -->
+<div class="pb"></div>
+<div class="section">
+  <div class="sec-hd"><div class="sec-title">AI Analyst Verdict</div></div>
+  <div class="vbox" style="background:#f0fdf4;border:1.5px solid #05966930;border-left:5px solid #059669">
+    <div class="vbox-badge" style="background:#05966918;border:1px solid #05966933;color:#059669">✓ Strong Visibility</div>
+    <div class="vbox-text"><div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(0,0,0,0.07)">
+           <div style="font-size:9px;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:#059669;margin-bottom:8px">Verdict</div><p style="margin:0;font-size:14px;font-weight:700;line-height:1.65;color:#0d0f1a">Your brand over-delivered on Instagram exposure, generating AED 230.79 in total media value with 85.9% visibility across a 64s video versus Instagram’s 25–40% typical sponsored-content range.</p></div><div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(0,0,0,0.07)">
+           <div style="font-size:9px;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:#059669;margin-bottom:8px">What Worked</div><div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.65;color:#0d0f1a">
+           <span style="width:6px;height:6px;border-radius:50%;background:#059669;flex-shrink:0;margin-top:7px"></span><span>Your brand secured 55s of visibility in a 64s asset, reaching 85.9% visibility and landing in the exceptional tier for Instagram exposure.</span></div><div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.65;color:#0d0f1a">
+           <span style="width:6px;height:6px;border-radius:50%;background:#059669;flex-shrink:0;margin-top:7px"></span><span>The placement captured the opening pre-swipe window at 0s and held a 22s continuous run from 0s–21s, giving Pepsi Cola sustained hero exposure before audience drop-off.</span></div><div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.65;color:#0d0f1a">
+           <span style="width:6px;height:6px;border-radius:50%;background:#059669;flex-shrink:0;margin-top:7px"></span><span>Your brand was reinforced through 15 audio mentions and 4 separate visibility runs, reducing dependence on a single branded moment while supporting recall beyond the visual frame.</span></div></div><div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(0,0,0,0.07)">
+           <div style="font-size:9px;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:#d97706;margin-bottom:8px">What Missed</div><div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.65;color:#0d0f1a">
+           <span style="width:6px;height:6px;border-radius:50%;background:#d97706;flex-shrink:0;margin-top:7px"></span><span>Frame quality diluted the result: the 63.3% quality index trailed 85.9% raw visibility by 22.6pp, meaning visible time did not consistently translate into high-quality brand presence.</span></div><div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.65;color:#0d0f1a">
+           <span style="width:6px;height:6px;border-radius:50%;background:#d97706;flex-shrink:0;margin-top:7px"></span><span>The 7.6/10 average visibility score was strong, but the 63.3% quality index shows your team still paid for low-score frames inside the 55s of brand visibility.</span></div></div><div style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(0,0,0,0.07)">
+           <div style="font-size:9px;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:#2952FF;margin-bottom:8px">Recommendations</div><div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.65;color:#0d0f1a">
+           <span style="width:20px;height:20px;border-radius:6px;background:#eff6ff;color:#2952FF;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</span><span>Raise frame quality: increase the quality index from 63.3% to 85.9% while maintaining 55s of brand visibility in the next 64s asset. Brief clause: “Pepsi Cola must remain foregrounded, unobstructed, label-facing, and visually dominant across all visible moments, with the quality index required to match 85.9% visibility.”</span></div><div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.65;color:#0d0f1a">
+           <span style="width:20px;height:20px;border-radius:6px;background:#eff6ff;color:#2952FF;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</span><span>Protect the opening sequence: retain brand presence at 0s and preserve a minimum continuous branded run of 22s from 0s–21s. Brief clause: “The product must appear at 0s and remain continuously visible for at least 22s from 0s–21s before any scene change reduces brand presence.”</span></div><div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.65;color:#0d0f1a">
+           <span style="width:20px;height:20px;border-radius:6px;background:#eff6ff;color:#2952FF;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</span><span>Contract multi-moment reinforcement: require at least 4 separate visibility runs and 15 audio mentions across the 64s video. Brief clause: “The creator must include a minimum of 4 distinct Pepsi Cola visual runs and 15 spoken Pepsi Cola mentions across the final 64s edit.”</span></div><div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.65;color:#0d0f1a">
+           <span style="width:20px;height:20px;border-radius:6px;background:#eff6ff;color:#2952FF;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</span><span>Renegotiate fee protection: cap the next fee at AED 230.79 unless visibility improves by 10%, with that improvement valued at AED 23. Brief clause: “Base compensation is tied to AED 230.79 delivered media value; any fee uplift requires a 10% visibility lift, valued at AED 23, and quality-index improvement from 63.3%.”</span></div></div><div><div style="font-size:9px;font-weight:800;letter-spacing:0.13em;text-transform:uppercase;color:#4f46e5;margin-bottom:8px">Negotiation Intelligence</div><div style="font-size:13px;line-height:1.75;color:#0d0f1a;padding:14px 16px;background:#f5f3ff;border-radius:10px;border-left:3px solid #4f46e5">1. Your leverage: your team has strong proof of exposure delivery at 85.9% visibility, 55s visible, brand presence from 0s, and a 22s opening run, but the 63.3% quality index creates a 22.6pp gap your team can use to push back on frame-quality standards.
+
+2. What to demand in writing: lock minimum requirements of 55s visible time, brand appearance at 0s, a 22s continuous opening run from 0s–21s, 4 separate visibility runs, 15 audio mentions, and a quality index above 63.3%.
+
+3. Rate card assessment: this creator is priced at fair value at AED 230.79 for this deliverable; any higher fee is overpriced unless your brand receives a 10% visibility improvement worth AED 23, with effective CPM controlled against AED 8.98 and the AED 8 benchmark.</div></div></div>
+  </div>
+</div>
+
+<!-- ── FRAME CHART + PLACEMENT ── -->
+
+<div class="pb"></div>
+<div class="section">
+  <div class="sec-hd"><div class="sec-title">Frame-by-Frame Brand Score</div><div class="sec-badge">203 frames analysed</div></div>
+  <div class="chart-wrap">
+    <svg width="540" height="70" viewBox="0 0 540 70" style="width:100%;display:block">
+      <defs>
+        <linearGradient id="gHigh" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#059669"/></linearGradient>
+        <linearGradient id="gMid"  x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#2952FF"/></linearGradient>
+        <linearGradient id="gLow"  x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f87171"/><stop offset="100%" stop-color="#dc2626"/></linearGradient>
+      </defs>
+      <rect x="4.0" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="6.6" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="9.2" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="11.9" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="14.5" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="17.1" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="19.7" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="22.3" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="25.0" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="27.6" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="30.2" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="32.8" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="35.4" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="38.1" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="40.7" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="43.3" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="45.9" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="48.6" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="51.2" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="53.8" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="56.4" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="59.0" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="61.7" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="64.3" y="12.0" width="2.0" height="58.0" rx="1.5" fill="url(#gHigh)"/><rect x="66.9" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="69.5" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="72.1" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="74.8" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="77.4" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="80.0" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="82.6" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="85.2" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="87.9" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="90.5" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="93.1" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="95.7" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="98.3" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="101.0" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="103.6" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="106.2" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="108.8" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="111.4" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="114.1" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="116.7" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="119.3" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="121.9" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="124.6" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="127.2" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="129.8" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="132.4" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="135.0" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="137.7" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="140.3" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="142.9" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="145.5" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="148.1" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="150.8" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="153.4" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="156.0" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="158.6" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="161.2" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="163.9" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="166.5" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="169.1" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="171.7" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="174.3" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="177.0" y="12.0" width="2.0" height="58.0" rx="1.5" fill="url(#gHigh)"/><rect x="179.6" y="12.0" width="2.0" height="58.0" rx="1.5" fill="url(#gHigh)"/><rect x="182.2" y="12.0" width="2.0" height="58.0" rx="1.5" fill="url(#gHigh)"/><rect x="184.8" y="12.0" width="2.0" height="58.0" rx="1.5" fill="url(#gHigh)"/><rect x="187.4" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="190.1" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="192.7" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="195.3" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="197.9" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="200.6" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="203.2" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="205.8" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="208.4" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="211.0" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="213.7" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="216.3" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="218.9" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="221.5" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="224.1" y="52.6" width="2.0" height="17.4" rx="1.5" fill="url(#gLow)"/><rect x="226.8" y="52.6" width="2.0" height="17.4" rx="1.5" fill="url(#gLow)"/><rect x="229.4" y="52.6" width="2.0" height="17.4" rx="1.5" fill="url(#gLow)"/><rect x="232.0" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="234.6" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="237.2" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="239.9" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="242.5" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="245.1" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="247.7" y="46.8" width="2.0" height="23.2" rx="1.5" fill="url(#gMid)"/><rect x="250.3" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="253.0" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="255.6" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="258.2" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="260.8" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="263.4" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="266.1" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="268.7" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="271.3" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="273.9" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="276.6" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="279.2" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="281.8" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="284.4" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="287.0" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="289.7" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="292.3" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="294.9" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="297.5" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="300.1" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="302.8" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="305.4" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="308.0" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="310.6" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="313.2" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="315.9" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="318.5" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="321.1" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="323.7" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="326.3" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="329.0" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="331.6" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="334.2" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="336.8" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="339.4" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="342.1" y="52.6" width="2.0" height="17.4" rx="1.5" fill="url(#gLow)"/><rect x="344.7" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="347.3" y="46.8" width="2.0" height="23.2" rx="1.5" fill="url(#gMid)"/><rect x="349.9" y="58.4" width="2.0" height="11.6" rx="1.5" fill="url(#gLow)"/><rect x="352.6" y="58.4" width="2.0" height="11.6" rx="1.5" fill="url(#gLow)"/><rect x="355.2" y="58.4" width="2.0" height="11.6" rx="1.5" fill="url(#gLow)"/><rect x="357.8" y="64.2" width="2.0" height="5.8" rx="1.5" fill="url(#gLow)"/><rect x="360.4" y="58.4" width="2.0" height="11.6" rx="1.5" fill="url(#gLow)"/><rect x="363.0" y="58.4" width="2.0" height="11.6" rx="1.5" fill="url(#gLow)"/><rect x="365.7" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="368.3" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="370.9" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="373.5" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="376.1" y="46.8" width="2.0" height="23.2" rx="1.5" fill="url(#gMid)"/><rect x="378.8" y="46.8" width="2.0" height="23.2" rx="1.5" fill="url(#gMid)"/><rect x="381.4" y="58.4" width="2.0" height="11.6" rx="1.5" fill="url(#gLow)"/><rect x="384.0" y="58.4" width="2.0" height="11.6" rx="1.5" fill="url(#gLow)"/><rect x="386.6" y="58.4" width="2.0" height="11.6" rx="1.5" fill="url(#gLow)"/><rect x="389.2" y="58.4" width="2.0" height="11.6" rx="1.5" fill="url(#gLow)"/><rect x="391.9" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="394.5" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="397.1" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="399.7" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="402.3" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="405.0" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="407.6" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="410.2" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="412.8" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="415.4" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="418.1" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="420.7" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="423.3" y="67.0" width="2.0" height="3.0" rx="1.5" fill="url(#gLow)"/><rect x="425.9" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="428.6" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="431.2" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="433.8" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="436.4" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="439.0" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="441.7" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="444.3" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="446.9" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="449.5" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="452.1" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="454.8" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="457.4" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="460.0" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="462.6" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="465.2" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="467.9" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="470.5" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="473.1" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="475.7" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="478.3" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="481.0" y="29.4" width="2.0" height="40.6" rx="1.5" fill="url(#gHigh)"/><rect x="483.6" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="486.2" y="52.6" width="2.0" height="17.4" rx="1.5" fill="url(#gLow)"/><rect x="488.8" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="491.4" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="494.1" y="41.0" width="2.0" height="29.0" rx="1.5" fill="url(#gMid)"/><rect x="496.7" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="499.3" y="23.6" width="2.0" height="46.4" rx="1.5" fill="url(#gHigh)"/><rect x="501.9" y="35.2" width="2.0" height="34.8" rx="1.5" fill="url(#gMid)"/><rect x="504.6" y="52.6" width="2.0" height="17.4" rx="1.5" fill="url(#gLow)"/><rect x="507.2" y="52.6" width="2.0" height="17.4" rx="1.5" fill="url(#gLow)"/><rect x="509.8" y="52.6" width="2.0" height="17.4" rx="1.5" fill="url(#gLow)"/><rect x="512.4" y="46.8" width="2.0" height="23.2" rx="1.5" fill="url(#gMid)"/><rect x="515.0" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="517.7" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="520.3" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="522.9" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="525.5" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="528.1" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="530.8" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/><rect x="533.4" y="17.8" width="2.0" height="52.2" rx="1.5" fill="url(#gHigh)"/>
+    </svg>
+    <div class="chart-legend">
+      <div class="cl-item"><div class="cl-dot" style="background:#34d399"></div>Strong (7–10)</div>
+      <div class="cl-item"><div class="cl-dot" style="background:#60a5fa"></div>Moderate (4–6)</div>
+      <div class="cl-item"><div class="cl-dot" style="background:#f87171"></div>Weak (0–3)</div>
+    </div>
+  </div>
+  
+  <div class="plc4">
+    <div class="plc-card"><div class="plc-val">61</div><div class="plc-pct">30%</div><div class="plc-lbl">Hero</div></div>
+    <div class="plc-card"><div class="plc-val">49</div><div class="plc-pct">24%</div><div class="plc-lbl">In-Use</div></div>
+    <div class="plc-card"><div class="plc-val">74</div><div class="plc-pct">36%</div><div class="plc-lbl">Background</div></div>
+    <div class="plc-card"><div class="plc-val">19</div><div class="plc-pct">9%</div><div class="plc-lbl">Not Visible</div></div>
+  </div>
+</div>
+
+<!-- ── VISIBILITY RUNS + SCORE (2-col) ── -->
+<div class="two-col section">
+  
+  <div>
+    <div class="sec-hd"><div class="sec-title">Visibility Runs</div></div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+      <div style="width:72px;font-size:11px;font-weight:700;color:#60a5fa;flex-shrink:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif">0s–21s</div>
+      <div style="flex:1;height:8px;background:rgba(255,255,255,0.09);border-radius:100px;overflow:hidden">
+        <div style="width:100%;height:100%;background:#2952FF;border-radius:100px"></div>
+      </div>
+      <div style="font-size:12px;font-weight:800;color:#e8ecff;width:36px;text-align:right">22s</div>
+    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+      <div style="width:72px;font-size:11px;font-weight:700;color:#60a5fa;flex-shrink:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif">24s–32s</div>
+      <div style="flex:1;height:8px;background:rgba(255,255,255,0.09);border-radius:100px;overflow:hidden">
+        <div style="width:41%;height:100%;background:#2952FF;border-radius:100px"></div>
+      </div>
+      <div style="font-size:12px;font-weight:800;color:#e8ecff;width:36px;text-align:right">9s</div>
+    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+      <div style="width:72px;font-size:11px;font-weight:700;color:#60a5fa;flex-shrink:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif">34s–35s</div>
+      <div style="flex:1;height:8px;background:rgba(255,255,255,0.09);border-radius:100px;overflow:hidden">
+        <div style="width:9%;height:100%;background:#2952FF;border-radius:100px"></div>
+      </div>
+      <div style="font-size:12px;font-weight:800;color:#e8ecff;width:36px;text-align:right">2s</div>
+    </div><div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+      <div style="width:72px;font-size:11px;font-weight:700;color:#60a5fa;flex-shrink:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif">38s–50s</div>
+      <div style="flex:1;height:8px;background:rgba(255,255,255,0.09);border-radius:100px;overflow:hidden">
+        <div style="width:59%;height:100%;background:#2952FF;border-radius:100px"></div>
+      </div>
+      <div style="font-size:12px;font-weight:800;color:#e8ecff;width:36px;text-align:right">13s</div>
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:#6b7280">Longest continuous run: <strong style="color:#2952FF">22s</strong> (0s – 21s)</div>
+  </div>
+  <div>
+    <div class="sec-hd"><div class="sec-title">Placement Score</div></div>
+    <div class="score-row">
+      <svg width="72" height="72" viewBox="0 0 72 72" style="flex-shrink:0">
+        <circle cx="36" cy="36" r="30" fill="none" stroke="#e5e9f2" stroke-width="8"/>
+        <circle cx="36" cy="36" r="30" fill="none" stroke="#059669" stroke-width="8"
+          stroke-dasharray="143.3 188.5"
+          stroke-dashoffset="0" transform="rotate(-90 36 36)" stroke-linecap="round"/>
+        <text x="36" y="42" text-anchor="middle" font-size="16" font-weight="900" font-family="monospace" fill="#059669">7.6</text>
+      </svg>
+      <div class="score-text">
+        <div class="score-big" style="color:#059669">7.6<span style="font-size:18px;font-weight:600;color:#9ca3af">/10</span></div>
+        <div class="score-sub">avg. brand placement quality</div>
+        <div class="score-bar" style="margin-top:14px"><div class="score-fill" style="width:76%;background:#059669"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:#9ca3af;margin-top:4px"><span>0</span><span>5</span><span>10</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE 2 ══ -->
+<div class="pb"></div>
+
+<!-- ── AUDIO ANALYSIS ── -->
+<div class="section">
+  <div class="sec-hd"><div class="sec-title">Audio Analysis</div><div class="sec-badge">15 brand mentions</div></div>
+
+  <!-- Background Music -->
+  <div style="margin-bottom:14px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3af;margin-bottom:8px">Background Music / Trending Sound</div>
+    <div class="music-none-card">
+          <div style="width:36px;height:36px;border-radius:10px;background:#e5e9f2;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">♪</div>
+          No song detected, speech-only audio or unrecognised track
+        </div>
+  </div>
+
+  <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">3s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"Pepsi's fist stop activation at Taste of Dubai"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(217,119,6,0.2);color:#fbbf24;border:1px solid rgba(217,119,6,0.4)">scripted</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #8892b0">
+          <div style="font-size:10px;font-weight:800;color:#8892b0;width:70px;flex-shrink:0;line-height:1.4">23s<br>purchase_intent</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"a Pepsi Zero Extra Fizz and honestly it was a need"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(217,119,6,0.2);color:#fbbf24;border:1px solid rgba(217,119,6,0.4)">scripted</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #fbbf24">
+          <div style="font-size:10px;font-weight:800;color:#fbbf24;width:70px;flex-shrink:0;line-height:1.4">30s<br>Implied</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"appreciating every detail this booth had"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(217,119,6,0.2);color:#fbbf24;border:1px solid rgba(217,119,6,0.4)">scripted</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">34s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"meet the Pepsi Cossi or Muhammad Shalbaira"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(217,119,6,0.2);color:#fbbf24;border:1px solid rgba(217,119,6,0.4)">scripted</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #8892b0">
+          <div style="font-size:10px;font-weight:800;color:#8892b0;width:70px;flex-shrink:0;line-height:1.4">49s<br>purchase_intent</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"of course I needed my Pepsi Zero Extra Fizz"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(217,119,6,0.2);color:#fbbf24;border:1px solid rgba(217,119,6,0.4)">scripted</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">61s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"elevating each dish with my Pepsi Zero Extra Fizz"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(217,119,6,0.2);color:#fbbf24;border:1px solid rgba(217,119,6,0.4)">scripted</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">68s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"Pepsi booth to redeem my prizes"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(217,119,6,0.2);color:#fbbf24;border:1px solid rgba(217,119,6,0.4)">scripted</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #fbbf24">
+          <div style="font-size:10px;font-weight:800;color:#fbbf24;width:70px;flex-shrink:0;line-height:1.4">71s<br>Implied</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"Overall absolutely love the experience"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(217,119,6,0.2);color:#fbbf24;border:1px solid rgba(217,119,6,0.4)">scripted</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">23s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"grabbed my drink, a Pepsi Zero Extra Fizz and honestly"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">49s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"course I needed my Pepsi Zero Extra Fizz. While tastin"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">60s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"elevating each dish with my Pepsi Zero Extra Fizz. Onc"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">1s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"I got the chance to check out Pepsi's f"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">14s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"around, appreciate the atmosphere and I was genuinel"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">20s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"t. Next I headed to the mixology bar and grabbed my d"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">33s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"so honored to meet the Pepsi Cossi or Muhammad Shalb"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">41s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"went off to try all the different food spots. First s"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">53s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"ting my way through the different food spots I placed"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">58s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"e by one completing the puzzle and elevating each dis"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">72s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"all absolutely love the experience."</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #60a5fa">
+          <div style="font-size:10px;font-weight:800;color:#60a5fa;width:70px;flex-shrink:0;line-height:1.4">55s<br>Explicit</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"ferent food spots I placed my stickers one by one comple"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div><div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.05);border-radius:9px;margin-bottom:6px;border-left:3px solid #fbbf24">
+          <div style="font-size:10px;font-weight:800;color:#fbbf24;width:70px;flex-shrink:0;line-height:1.4">22s<br>Implied</div>
+          <div style="font-size:12px;color:#c0c8e0;flex:1;font-style:italic;line-height:1.5">"bar and grabbed my drink, a Pepsi Zero Extra Fizz and"</div>
+          <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;flex-shrink:0;background:rgba(5,150,105,0.2);color:#34d399;border:1px solid rgba(5,150,105,0.4)">organic</div>
+        </div>
+  
+  <div style="margin-top:16px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3af;margin-bottom:8px">Transcript</div>
+    <div style="font-size:11px;color:#6b7280;line-height:1.75;background:#f8faff;border:1.5px solid #e5e9f2;border-radius:10px;padding:16px;font-family:'Plus Jakarta Sans',system-ui,sans-serif">I got the chance to check out Pepsi's fist stop activation at Taste of Dubai and it was such a fun experience from start to finish. I took a moment to look around, appreciate the atmosphere and I was genuinely enjoying every bit of it. Next I headed to the mixology bar and grabbed my drink, a Pepsi Zero Extra Fizz and honestly it was a need. I also was appreciating every detail this booth had and I was so honored to meet the Pepsi Cossi or Muhammad Shalbaira. And then I picked up my sticker card and went off to try all the different food spots. First stop was this burger and it was so good but of course I needed my Pepsi Zero Extra Fizz. While tasting my way through the different food spots …</div>
+  </div>
+</div>
+
+<!-- ── COMMENT ANALYSIS ── -->
+
+<div class="section">
+  <div class="sec-hd"><div class="sec-title">Audience Comment Analysis</div><div class="sec-badge">6 comments sampled</div></div>
+
+  <!-- Stats row -->
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px">
+    <div class="mcard"><div class="mlbl">Sentiment</div><div class="mval" style="color:#059669">76%</div><div class="msub">positive index</div></div>
+    <div class="mcard"><div class="mlbl">Brand Mentions</div><div class="mval">1</div><div class="msub">17% rate</div></div>
+    <div class="mcard"><div class="mlbl">Purchase Intent</div><div class="mval" style="color:#2952FF">0</div><div class="msub">buy signals</div></div>
+    <div class="mcard"><div class="mlbl">Viral Potential</div><div class="mval" style="color:#d97706">3<span style="font-size:11px;color:#9ca3af">/10</span></div><div class="msub">amplification</div></div>
+    <div class="mcard"><div class="mlbl">Multiplier</div><div class="mval">1.13x</div><div class="msub">value adj.</div></div>
+  </div>
+
+  <!-- Sentiment bar + perception -->
+  <div class="two-col" style="margin-bottom:16px;gap:14px">
+    <div>
+      
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#9ca3af;margin-bottom:8px">Sentiment Split</div>
+      <div style="display:flex;height:10px;border-radius:100px;overflow:hidden;margin-bottom:6px">
+        <div style="width:83%;background:#059669;transition:width 0.3s"></div>
+        <div style="width:17%;background:#9ca3af"></div>
+        <div style="width:0%;background:#dc2626"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:#9ca3af">
+        <span style="color:#059669;font-weight:700">5 positive (83%)</span>
+        <span>1 neutral</span>
+        <span style="color:#dc2626;font-weight:700">0 negative</span>
+      </div>
+    </div>
+    
+    <div>
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#9ca3af;margin-bottom:8px">Brand Perception</div>
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:100px;background:rgba(5,150,105,0.15);border:1.5px solid rgba(5,150,105,0.35);color:#34d399;font-size:13px;font-weight:800;text-transform:capitalize">positive</div>
+    </div>
+  </div>
+
+  <!-- Themes -->
+  <div class="two-col" style="margin-bottom:14px">
+    <div></div>
+    <div></div>
+  </div>
+
+  
+
+  <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#9ca3af;margin-bottom:8px">Top Comments</div><div style="font-size:12px;color:#c0c8e0;padding:11px 14px;background:rgba(255,255,255,0.05);border-radius:9px;border-left:3px solid rgba(255,255,255,0.12);margin-bottom:6px;line-height:1.6"><span style="color:rgba(255,255,255,0.2);font-size:18px;line-height:0;vertical-align:-4px;margin-right:4px">"</span>elenakakoun: 😍😍😍 — Strong product admiration</div><div style="font-size:12px;color:#c0c8e0;padding:11px 14px;background:rgba(255,255,255,0.05);border-radius:9px;border-left:3px solid rgba(255,255,255,0.12);margin-bottom:6px;line-height:1.6"><span style="color:rgba(255,255,255,0.2);font-size:18px;line-height:0;vertical-align:-4px;margin-right:4px">"</span>zeina.samara: 💙 — Pepsi brand colour, implicit brand signal</div><div style="font-size:12px;color:#c0c8e0;padding:11px 14px;background:rgba(255,255,255,0.05);border-radius:9px;border-left:3px solid rgba(255,255,255,0.12);margin-bottom:6px;line-height:1.6"><span style="color:rgba(255,255,255,0.2);font-size:18px;line-height:0;vertical-align:-4px;margin-right:4px">"</span>banahanbali: 😍😍🧡 — Strong product admiration</div><div style="font-size:12px;color:#c0c8e0;padding:11px 14px;background:rgba(255,255,255,0.05);border-radius:9px;border-left:3px solid rgba(255,255,255,0.12);margin-bottom:6px;line-height:1.6"><span style="color:rgba(255,255,255,0.2);font-size:18px;line-height:0;vertical-align:-4px;margin-right:4px">"</span>anumstagram: 😍😍😍 — Strong product admiration</div></div>
+  <div style="margin-top:12px;font-size:12px;color:#4b5563;background:#f8faff;border:1.5px solid #e5e9f2;border-radius:10px;padding:16px;line-height:1.7;font-style:italic">"6 comments analysed. Dominant emotion is product admiration (emoji-driven, no text). zeina.samara posted 💙 (Pepsi brand colour) — implicit brand signal, lifting brand_mention_count to 1. Sentiment 76/100, capped below 80: purely emoji-driven with no text, no purchase intent, no explicit product reference. Comment section lacks depth but signals genuine positive affinity."</div>
+</div>
+
+<!-- ── IMPROVEMENTS ── -->
+
+<div class="pb"></div>
+<div class="section">
+  <div class="sec-hd"><div class="sec-title">AI Improvement Recommendations</div><div class="sec-badge">Next campaign</div></div>
+  
+    <div style="display:flex;gap:14px;padding:20px 24px;background:rgba(255,255,255,0.05);border-radius:10px;border:1px solid rgba(255,255,255,0.09)">
+      <div style="width:32px;height:32px;border-radius:50%;background:#2952FF;color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:800;color:#e8ecff;margin-bottom:10px">EXTEND PEPSI COLA THROUGH THE FINAL 10 SECONDS</div>
+        <div style="display:flex;gap:7px;align-items:flex-start;margin-bottom:5px"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#f87171;background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Problem</span><span style="font-size:12px;color:#b0bcd8;line-height:1.6">Pepsi Cola is last visible at 50s in a 64s Instagram Reel, leaving 14s after the final confirmed visual.</span></div><div style="display:flex;gap:7px;align-items:flex-start;margin-bottom:5px"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#60a5fa;background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.35);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Fix</span><span style="font-size:12px;color:#b0bcd8;line-height:1.6">Require Pepsi Cola to remain visible during the closing sequence, not just the opening and mid-roll. Lock the bottle/can/cup into the final 10s with the label facing camera.  
+Brief clause: “Pepsi Cola must appear on-screen for a minimum of 10 additional seconds between 50s and 64s, with the pack, cup, or branded serve visible at foreground level; background signage alone does not qualify.”</span></div><div style="display:flex;gap:7px;align-items:flex-start"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#34d399;background:rgba(5,150,105,0.2);border:1px solid rgba(5,150,105,0.35);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Value</span><span style="font-size:12px;color:#34d399;font-weight:600;line-height:1.6">+10s visibility is pre-valued at AED 39 estimated additional media value.</span></div>
+      </div>
+    </div><div style="break-before:page;page-break-before:always;height:0;margin:0;padding:0"></div>
+    <div style="display:flex;gap:14px;padding:20px 24px;background:rgba(255,255,255,0.05);border-radius:10px;border:1px solid rgba(255,255,255,0.09)">
+      <div style="width:32px;height:32px;border-radius:50%;background:#2952FF;color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:800;color:#e8ecff;margin-bottom:10px">REMOVE SUB-7 PROMINENCE FRAMES</div>
+        <div style="display:flex;gap:7px;align-items:flex-start;margin-bottom:5px"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#f87171;background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Problem</span><span style="font-size:12px;color:#b0bcd8;line-height:1.6">Your quality index is 63.3%, trailing raw visibility of 85.9% by 22.6pp, with weak Pepsi Cola frames at 18s scoring 6/10, 21s scoring 5/10, and 48s scoring 6/10.</span></div><div style="display:flex;gap:7px;align-items:flex-start;margin-bottom:5px"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#60a5fa;background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.35);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Fix</span><span style="font-size:12px;color:#b0bcd8;line-height:1.6">Specify a minimum Pepsi Cola prominence standard for every visible product moment in the Instagram edit. Cut or reshoot any shot where the product drops below 7/10 prominence.  
+Brief clause: “Every Pepsi Cola visual in the final Instagram Reel must score at least 7/10 for prominence; any shot equivalent to the 18s, 21s, or 48s low-score frames must be replaced before approval.”</span></div><div style="display:flex;gap:7px;align-items:flex-start"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#34d399;background:rgba(5,150,105,0.2);border:1px solid rgba(5,150,105,0.35);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Value</span><span style="font-size:12px;color:#34d399;font-weight:600;line-height:1.6">This targets closing the 22.6pp quality gap between 63.3% quality index and 85.9% raw visibility.</span></div>
+      </div>
+    </div><div style="break-before:page;page-break-before:always;height:0;margin:0;padding:0"></div>
+    <div style="display:flex;gap:14px;padding:20px 24px;background:rgba(255,255,255,0.05);border-radius:10px;border:1px solid rgba(255,255,255,0.09)">
+      <div style="width:32px;height:32px;border-radius:50%;background:#2952FF;color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:800;color:#e8ecff;margin-bottom:10px">REBUILD THE 18S–23S PRODUCT MOMENT</div>
+        <div style="display:flex;gap:7px;align-items:flex-start;margin-bottom:5px"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#f87171;background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Problem</span><span style="font-size:12px;color:#b0bcd8;line-height:1.6">The mid-roll drops from strong early Pepsi Cola prominence to 6/10 at 18s and 5/10 at 21s, directly diluting the 63.3% quality index.</span></div><div style="display:flex;gap:7px;align-items:flex-start;margin-bottom:5px"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#60a5fa;background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.35);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Fix</span><span style="font-size:12px;color:#b0bcd8;line-height:1.6">Move Pepsi Cola into a controlled hand-to-camera drinking or pour shot from 18s to 23s. Require the label to face camera for 5 continuous seconds while @Aya Derar interacts with the product.  
+Brief clause: “Between 18s and 23s, Pepsi Cola must be held, poured, or consumed in-frame for 5 continuous seconds, label facing camera, occupying foreground space; passive booth background does not qualify.”</span></div><div style="display:flex;gap:7px;align-items:flex-start"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#34d399;background:rgba(5,150,105,0.2);border:1px solid rgba(5,150,105,0.35);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Value</span><span style="font-size:12px;color:#34d399;font-weight:600;line-height:1.6">This targets replacing two sub-7/10 frames at 18s and 21s with 7/10+ Pepsi Cola prominence.</span></div>
+      </div>
+    </div><div style="break-before:page;page-break-before:always;height:0;margin:0;padding:0"></div>
+    <div style="display:flex;gap:14px;padding:20px 24px;background:rgba(255,255,255,0.05);border-radius:10px;border:1px solid rgba(255,255,255,0.09)">
+      <div style="width:32px;height:32px;border-radius:50%;background:#2952FF;color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">4</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:800;color:#e8ecff;margin-bottom:10px">ADD A PEPSI COLA COMMENT CTA INSIDE THE REEL</div>
+        <div style="display:flex;gap:7px;align-items:flex-start;margin-bottom:5px"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#f87171;background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Problem</span><span style="font-size:12px;color:#b0bcd8;line-height:1.6">Engagement rate is 0.01% against Instagram’s 3% average, creating a 3.0pp engagement gap despite 25,700 views.</span></div><div style="display:flex;gap:7px;align-items:flex-start;margin-bottom:5px"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#60a5fa;background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.35);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Fix</span><span style="font-size:12px;color:#b0bcd8;line-height:1.6">Add an explicit Pepsi Cola engagement prompt on-screen and verbally in the Reel, tied to the Taste of Dubai moment. Make the creator ask viewers to comment their Pepsi Cola pairing or Pepsi Zero Extra Fizz choice.  
+Brief clause: “The Instagram Reel must include one spoken and on-screen CTA by 30s: ‘Comment your Pepsi Cola food pairing’ or ‘Comment ZERO FIZZ if you’d try Pepsi Zero Extra Fizz’; CTA must remain on-screen for at least 3 seconds.”</span></div><div style="display:flex;gap:7px;align-items:flex-start"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#34d399;background:rgba(5,150,105,0.2);border:1px solid rgba(5,150,105,0.35);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Value</span><span style="font-size:12px;color:#34d399;font-weight:600;line-height:1.6">This targets lifting engagement rate from 0.01% toward the 3% Instagram average, closing the 3.0pp gap.</span></div>
+      </div>
+    </div><div style="break-before:page;page-break-before:always;height:0;margin:0;padding:0"></div>
+    <div style="display:flex;gap:14px;padding:20px 24px;background:rgba(255,255,255,0.05);border-radius:10px;border:1px solid rgba(255,255,255,0.09)">
+      <div style="width:32px;height:32px;border-radius:50%;background:#2952FF;color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">5</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:800;color:#e8ecff;margin-bottom:10px">CONTRACT A 48-HOUR INSTAGRAM ENGAGEMENT SPRINT</div>
+        <div style="display:flex;gap:7px;align-items:flex-start;margin-bottom:5px"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#f87171;background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.3);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Problem</span><span style="font-size:12px;color:#b0bcd8;line-height:1.6">At 25,700 views, the 0.01% engagement rate shows your Instagram exposure is not converting into active audience signals versus the 3% platform average.</span></div><div style="display:flex;gap:7px;align-items:flex-start;margin-bottom:5px"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#60a5fa;background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.35);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Fix</span><span style="font-size:12px;color:#b0bcd8;line-height:1.6">Negotiate a mandatory post-live engagement window with @Aya Derar. Your team must require pinned Pepsi Cola prompting, creator replies, and Story re-shares within the first 48 hours.  
+Brief clause: “Within 48 hours of posting, creator must pin one Pepsi Cola comment within 1 hour, reply to at least 20 audience comments, and share the Reel to Instagram Stories twice with a Pepsi Cola question sticker.”</span></div><div style="display:flex;gap:7px;align-items:flex-start"><span style="font-size:9px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#34d399;background:rgba(5,150,105,0.2);border:1px solid rgba(5,150,105,0.35);padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:1px">Value</span><span style="font-size:12px;color:#34d399;font-weight:600;line-height:1.6">This targets closing the 3.0pp engagement-rate gap between 0.01% and the 3% Instagram average.</span></div>
+      </div>
+    </div>
+</div>
+
+<!-- ══ PAGE 3 ══ -->
+<div class="pb"></div>
+
+<!-- ── TECHNICAL BREAKDOWN ── -->
+<div class="section">
+  <div class="sec-hd"><div class="sec-title">Technical Breakdown</div></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+    <div class="mcard"><div class="mlbl">CPM Rate</div><div class="mval" style="font-size:16px">$2</div><div class="msub">per 1,000 views</div></div>
+    <div class="mcard"><div class="mlbl">Weighted Vis.</div><div class="mval" style="font-size:16px">63.3%</div><div class="msub">quality-adjusted</div></div>
+    <div class="mcard"><div class="mlbl">Eng. Multiplier</div><div class="mval" style="font-size:16px">1.50x</div><div class="msub">value adj.</div></div>
+    <div class="mcard"><div class="mlbl">Longest Run</div><div class="mval" style="font-size:16px">22s</div><div class="msub">0s–21s</div></div>
+    <div class="mcard"><div class="mlbl">Frames Analysed</div><div class="mval" style="font-size:16px">203</div><div class="msub">unique frames</div></div>
+    <div class="mcard"><div class="mlbl">Visible Frames</div><div class="mval" style="font-size:16px">184</div><div class="msub">91% of total</div></div>
+    <div class="mcard"><div class="mlbl">Comment Mult.</div><div class="mval" style="font-size:16px">1.13x</div><div class="msub">audience signal</div></div>
+    <div class="mcard"><div class="mlbl">Visibility Runs</div><div class="mval" style="font-size:16px">4</div><div class="msub">continuous bursts</div></div>
+  </div>
+</div>
+
+<!-- ── REPORT DETAILS ── -->
+<div class="section">
+  <div class="sec-hd"><div class="sec-title">Report Details</div></div>
+  <table class="info-tbl">
+    <tr><td>Product / Brand</td><td>Pepsi is a carbonated cola soft drink typically seen in cobalt-blue aluminum cans, clear plastic bottles with blue labels, or branded fountain cups, featuring the circular red-white-blue Pepsi globe logo prominently centered on the front. In social media videos it often appears held in hand, placed on tables beside food, opened or poured over ice, with the dark brown fizzy cola visible in a glass or cup as it is consumed.</td></tr>
+    <tr><td>Platform</td><td>Instagram</td></tr>
+    <tr><td>Creator / Channel</td><td>Aya Derar</td></tr>
+    <tr><td>Video Title</td><td style="font-size:11px">Video by aya_derar</td></tr>
+    <tr><td>Video URL</td><td style="word-break:break-all;font-size:10px">https://www.instagram.com/p/DUlHkrbj2Pq/</td></tr>
+    <tr><td>Views</td><td>25,700 (verified)</td></tr>
+    <tr><td>Likes</td><td>78</td></tr>
+    <tr><td>Comments</td><td>14</td></tr>
+    <tr><td>Engagement Rate</td><td>0.36%</td></tr>
+    
+    <tr><td>Analysis Date</td><td>30/04/2026, 05:19:40</td></tr>
+    <tr><td>Generated On</td><td>30 April 2026</td></tr>
+    <tr><td>Report ID</td><td style="font-size:10px">024afea5-9b41-421a-9f63-c6ff4d67ce35</td></tr>
+    <tr><td>Benchmark Tier</td><td style="color:#059669;font-weight:700">Exceptional for Instagram</td></tr>
+  </table>
+</div>
+
+</div><!-- /body -->
+
+<!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+<div class="rpt-footer">
+  <div class="footer-logo">
+    <div class="footer-mark"><svg width="12" height="12" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="3.5" stroke="white" stroke-width="1.2"/><circle cx="5" cy="5" r="1.2" fill="white"/></svg></div>
+    SpotCheck
+  </div>
+  <div>Confidential · Pepsi is a carbonated cola soft drink typically seen in cobalt-blue aluminum cans, clear plastic bottles with blue labels, or branded fountain cups, featuring the circular red-white-blue Pepsi globe logo prominently centered on the front. In social media videos it often appears held in hand, placed on tables beside food, opened or poured over ice, with the dark brown fizzy cola visible in a glass or cup as it is consumed. Brand Visibility Report</div>
+  <div>Generated 30 April 2026</div>
+</div>
+
+<script>
+  document.querySelectorAll('.info-tbl tr').forEach(row => {
+    row.addEventListener('mouseenter', () => row.style.background = '#f0f4ff');
+    row.addEventListener('mouseleave', () => row.style.background = '');
+  });
+  function savePDF() {
+    document.getElementById('pdf-guide').style.display = 'flex';
+  }
+
+  async function loadScript(src) {
+    return new Promise((res, rej) => {
+      if (document.querySelector('script[src="' + src + '"]')) return res();
+      const s = document.createElement('script'); s.src = src;
+      s.onload = res; s.onerror = rej; document.head.appendChild(s);
+    });
+  }
+
+  async function saveSlides() {
+    const btn = document.getElementById('slidesBtn');
+    const orig = btn.innerHTML;
+    try {
+      btn.textContent = 'Loading…'; btn.disabled = true;
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
+      await loadScript('https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js');
+
+      // Collect sections in order
+      const sections = [];
+      const cover = document.querySelector('.cover');
+      if (cover) sections.push({ el: cover, label: 'Cover' });
+      const contents = document.querySelector('.contents-page');
+      if (contents) sections.push({ el: contents, label: 'Contents' });
+      document.querySelectorAll('.body .section').forEach(sec => {
+        const title = sec.querySelector('.sec-title');
+        sections.push({ el: sec, label: title ? title.textContent.trim() : 'Section' });
+      });
+
+      document.querySelectorAll('.no-print').forEach(el => el.style.visibility = 'hidden');
+
+      const pptx = new PptxGenJS();
+      pptx.layout = 'LAYOUT_WIDE'; // 13.33" × 7.5"
+      const SW = 13.33, SH = 7.5;
+
+      const captureEl = async (el) => {
+        const isCover = el.classList.contains('cover') || el.classList.contains('contents-page');
+        if (isCover) {
+          return html2canvas(el, { scale: 2, useCORS: true, logging: false, backgroundColor: '#080d1e', windowWidth: 1200 });
+        }
+        // Wrap body sections in padded dark container for breathing room
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'background:#080d1e;padding:44px 56px;box-sizing:border-box';
+        el.parentNode.insertBefore(wrap, el);
+        wrap.appendChild(el);
+        const c = await html2canvas(wrap, { scale: 2, useCORS: true, logging: false, backgroundColor: '#080d1e', windowWidth: 1200 });
+        wrap.parentNode.insertBefore(el, wrap);
+        wrap.remove();
+        return c;
+      };
+
+      for (let i = 0; i < sections.length; i++) {
+        const { el, label } = sections[i];
+        btn.textContent = `Slide ${i + 1}/${sections.length}…`;
+
+        const canvas = await captureEl(el);
+        const imgData = canvas.toDataURL('image/jpeg', 0.95);
+        const ar = canvas.width / canvas.height;
+        const slide = pptx.addSlide();
+        slide.background = { color: '080d1e' };
+
+        let iW = SW, iH = SW / ar, x = 0, y = 0;
+        if (iH > SH) { iH = SH; iW = SH * ar; x = (SW - iW) / 2; }
+        else { y = (SH - iH) / 2; }
+        slide.addImage({ data: imgData, x, y, w: iW, h: iH });
+      }
+
+      document.querySelectorAll('.no-print').forEach(el => el.style.visibility = '');
+
+      const product = document.querySelector('.product-name')?.textContent?.trim() || 'SpotCheck';
+      await pptx.writeFile({ fileName: product + ', SpotCheck Slides.pptx' });
+
+    } catch (err) {
+      document.querySelectorAll('.no-print').forEach(el => el.style.visibility = '');
+      console.error(err);
+      alert('Slides failed: ' + err.message);
+    } finally {
+      btn.innerHTML = orig; btn.disabled = false;
+    }
+  }
+</script>
+<script src="nav.js"></script>
+</body></html>
